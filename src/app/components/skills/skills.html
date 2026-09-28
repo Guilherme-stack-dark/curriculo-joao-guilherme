@@ -1,0 +1,50 @@
+<section class="skills">
+  <!-- Cabeçalho da Seção -->
+  <div class="skills__header">
+    <div class="skills__subtitle">Competências & Tecnologias</div>
+    <h2 class="skills__title">Stack Técnica & Habilidades</h2>
+  </div>
+
+  <!-- Barra de Filtros Reativos -->
+  <div class="skills__filters" role="group" aria-label="Filtrar habilidades por categoria">
+    @for (cat of categorias(); track cat) {
+      <button
+        type="button"
+        class="skills__filter-btn"
+        [class.skills__filter-btn--active]="filtroAtivo() === cat"
+        (click)="setFiltro(cat)">
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- Grade de Barras de Progresso -->
+  <div class="skills__grid">
+    @for (skill of skillsFiltradas(); track skill.nome) {
+      <div class="skills__card">
+        <div class="skills__card-top">
+          <span class="skills__card-name">{{ skill.nome }}</span>
+          <span class="skills__card-category">{{ skill.categoria }}</span>
+        </div>
+
+        <div class="skills__bar-wrapper">
+          <div class="skills__bar-track">
+            <div
+              class="skills__bar-fill"
+              [style.width.%]="skill.nivel"
+              [attr.aria-valuenow]="skill.nivel"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              role="progressbar">
+            </div>
+          </div>
+          <span class="skills__bar-percentage">{{ skill.nivel }}%</span>
+        </div>
+      </div>
+    } @empty {
+      <div class="skills__empty">
+        <p>Nenhuma habilidade cadastrada para esta categoria.</p>
+      </div>
+    }
+  </div>
+</section>

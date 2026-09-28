@@ -1,0 +1,70 @@
+<footer class="contato">
+  <!-- Cabeçalho da Seção -->
+  <div class="contato__header">
+    <div class="contato__subtitle">Vamos Conversar?</div>
+    <h2 class="contato__title">Canais de Contato & Oportunidades</h2>
+    <p class="contato__intro">
+      Estou em busca da minha primeira oportunidade em <strong>Suporte Técnico e TI</strong>. Fique à vontade para me mandar uma mensagem direta no WhatsApp ou enviar um e-mail!
+    </p>
+  </div>
+
+  <!-- Grid de Cartões de Contato -->
+  <div class="contato__grid">
+    <!-- WhatsApp Direto -->
+    <a
+      [href]="whatsappLink()"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="contato__card contato__card--link"
+      title="Conversar pelo WhatsApp">
+      <div class="contato__card-icon">💬</div>
+      <div class="contato__card-info">
+        <span class="contato__card-label">WhatsApp Pessoal</span>
+        <span class="contato__card-value">{{ telefoneFormatado() }}</span>
+      </div>
+      <span class="contato__card-action">Conversar ↗</span>
+    </a>
+
+    <!-- Cartão com Botão Interativo de Copiar E-mail -->
+    <div class="contato__card">
+      <div class="contato__card-icon">✉️</div>
+      <div class="contato__card-info">
+        <span class="contato__card-label">E-mail Profissional</span>
+        <span class="contato__card-value">{{ email() }}</span>
+      </div>
+      <button
+        type="button"
+        class="contato__copy-btn"
+        [class.contato__copy-btn--copied]="copiado()"
+        (click)="copiarEmail()"
+        [attr.aria-label]="copiado() ? 'E-mail copiado' : 'Copiar e-mail'">
+        @if (copiado()) {
+          <span>✓ Copiado!</span>
+        } @else {
+          <span>📋 Copiar</span>
+        }
+      </button>
+    </div>
+
+    <!-- Localização -->
+    <div class="contato__card">
+      <div class="contato__card-icon">📍</div>
+      <div class="contato__card-info">
+        <span class="contato__card-label">Localização</span>
+        <span class="contato__card-value">{{ localizacao() }}</span>
+      </div>
+      <span class="contato__badge-status">Disponível</span>
+    </div>
+  </div>
+
+  <!-- Assinatura Final do Rodapé -->
+  <div class="contato__bottom">
+    <div class="contato__divider"></div>
+    <p class="contato__author">
+      Desenvolvido por <strong>João Guilherme Ávila</strong> • Angular 22 & SCSS
+    </p>
+    <p class="contato__credits">
+      Hackathon Proenergia Summit 2026 • Trilha de Inovação
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,32 @@
+<section class="timeline">
+  <!-- Cabeçalho da Seção -->
+  <div class="timeline__header">
+    <div class="timeline__subtitle">Evolução & Objetivos</div>
+    <h2 class="timeline__title">Trajetória Acadêmica & Carreira</h2>
+  </div>
+
+  <!-- A Linha do Tempo Vertical com Nós Luminosos -->
+  <div class="timeline__list">
+    @for (marco of marcos(); track marco.id) {
+      <div class="timeline__item" [class.timeline__item--destaque]="marco.tipo === 'objetivo'">
+        <!-- Ponto / Nó luminoso na linha vertical -->
+        <div class="timeline__dot" [title]="marco.periodo"></div>
+
+        <!-- Conteúdo do Marco -->
+        <div class="timeline__card">
+          <div class="timeline__period">{{ marco.periodo }}</div>
+          <h3 class="timeline__card-title">{{ marco.titulo }}</h3>
+          <div class="timeline__card-institution">{{ marco.instituicao }}</div>
+
+          <p class="timeline__card-desc">{{ marco.descricao }}</p>
+
+          <div class="timeline__tags">
+            @for (tag of marco.tags; track tag) {
+              <span class="timeline__tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

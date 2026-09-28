@@ -1,0 +1,200 @@
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.contato {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-xl) var(--space-md) var(--space-3xl);
+
+  @include tablet {
+    padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  }
+
+  // Cabeçalho da Seção
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  &__subtitle {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  &__intro {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 580px;
+    line-height: 1.6;
+
+    strong {
+      color: var(--text-primary);
+    }
+  }
+
+  // Grade de Cartões de Contato
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  // Cartão Individual de Contato
+  &__card {
+    @include glass(12px, 0.06);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    &--link {
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover .contato__card-action {
+        color: var(--accent);
+        transform: translate(2px, -2px);
+      }
+    }
+  }
+
+  &__card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  &__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__card-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__card-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__card-action {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  &__badge-status {
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 255, 200, 0.1);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  // Botão Copiar E-mail
+  &__copy-btn {
+    @include glass(8px, 0.08);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    &--copied {
+      background: var(--accent);
+      color: var(--bg-primary);
+      border-color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+  }
+
+  // Rodapé Final
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-xl);
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin-bottom: var(--space-lg);
+  }
+
+  &__author {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+
+    strong {
+      color: var(--text-primary);
+    }
+  }
+
+  &__credits {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+}

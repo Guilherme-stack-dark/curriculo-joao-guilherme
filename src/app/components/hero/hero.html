@@ -1,0 +1,48 @@
+<header class="hero">
+  <!-- Barra Superior: Botão do Toggle Dark / Light -->
+  <div class="hero__top-bar">
+    <button
+      type="button"
+      class="hero__theme-btn"
+      (click)="alternarTema()"
+      [attr.aria-label]="tema() === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'">
+      @if (tema() === 'dark') {
+        <span class="hero__theme-icon">☀️</span>
+        <span class="hero__theme-text">Modo Claro</span>
+      } @else {
+        <span class="hero__theme-icon">🌙</span>
+        <span class="hero__theme-text">Modo Escuro</span>
+      }
+    </button>
+  </div>
+
+  <!-- Conteúdo Principal da Apresentação -->
+  <div class="hero__content">
+    <!-- Avatar com Anel Neon e Indicador de Status -->
+    <div class="hero__avatar-wrapper">
+      <img
+        class="hero__avatar"
+        [src]="avatarUrl()"
+        [alt]="'Avatar de ' + nome()"
+        width="150"
+        height="150"
+      />
+      <span class="hero__status-badge" title="Pronto para o Hackathon">
+        <span class="hero__status-dot"></span>
+        Online
+      </span>
+    </div>
+
+    <!-- Informações de Perfil -->
+    <div class="hero__info">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        {{ papel() }}
+      </div>
+
+      <h1 class="hero__nome">{{ nome() }}</h1>
+
+      <p class="hero__bio">{{ bio() }}</p>
+    </div>
+  </div>
+</header>
